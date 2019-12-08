@@ -2,19 +2,19 @@ package main
 
 import (
 	"fmt"
-	"projecteuler/problem16"
+	"projecteuler/problem17"
+	"strings"
 )
 
 func main() {
-
-	// fmt.Println(problem16.BigProduct("1099511627776", "1099511627776", 5))
-	pow := problem16.BigPower("2", 1000)
-
-	sumDigits := uint64(0)
-
-	for i := range pow {
-		sumDigits += uint64(pow[i] - 48)
+	sum := 0
+	for i := uint16(1); i <= 1000; i++ {
+		word := problem17.NumberToWord(i)
+		word = strings.Replace(word, " ", "", -1)
+		word = strings.Replace(word, "-", "", -1)
+		// fmt.Println(word)
+		sum += len(word)
 	}
+	fmt.Println(sum)
 
-	fmt.Println(sumDigits)
 }
