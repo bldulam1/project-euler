@@ -65,17 +65,5 @@ func NumberToWord(num uint16) string {
 		panic(fmt.Sprintf("cannot handle %d", num))
 	}
 
-	// if num < 20 || (num%10 == 0 && num < 100) {
-	// 	word = Numbers[num]
-	// } else if num < 100 {
-	// 	digit10 := 10 * ((num % 100) / 10)
-	// 	digit1 := num % 10
-	// 	word = Numbers[digit10] + "-" + Numbers[digit1]
-	// } else if num%100 > 0 {
-	// 	word = fmt.Sprintf("%s hundred and %s", Numbers[num/100], NumberToWord(num%100))
-	// } else {
-	// 	word = fmt.Sprintf("%s hundred", Numbers[num/100])
-	// }
-
 	return word
 }

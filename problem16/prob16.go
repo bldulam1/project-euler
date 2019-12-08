@@ -8,6 +8,7 @@ import (
 )
 
 const maxUINT = 0xFFFFFFFF
+const baseZeros = 5
 
 // BigNum is a number in string format
 type BigNum struct {
@@ -46,11 +47,15 @@ func BigSum(addends []string) string {
 		sum = strconv.Itoa(int(rem%10)) + sum
 	}
 
+	if co > 0 {
+		sum = strconv.Itoa(int(co)) + sum
+	}
+
 	return sum
 }
 
 // BigProduct returns the product of two big numbers
-func BigProduct(a string, b string, baseZeros int) string {
+func BigProduct(a string, b string) string {
 	num1 := BigNum{a}.Digits(baseZeros)
 	num2 := BigNum{b}.Digits(baseZeros)
 
@@ -95,7 +100,7 @@ func BigProduct(a string, b string, baseZeros int) string {
 func BigPower(num string, n uint) string {
 	acc := "1"
 	for i := uint(0); i < n; i++ {
-		acc = BigProduct(acc, num, 5)
+		acc = BigProduct(acc, num)
 	}
 	return acc
 }
