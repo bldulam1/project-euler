@@ -2,23 +2,18 @@ package main
 
 import (
 	"fmt"
-	"projecteuler/problem21"
+	"projecteuler/problem23"
 )
 
 func main() {
+	anMap, anSlice := problem23.GetAbundantNumbers(1, 28123)
 
-	pairs := make(map[int]int, 0)
+	//fmt.Println(problem23.HasAbundantAddends(228, &anSlice, &anMap))
 	sum := 0
-	for i := 1; i < 10000; i++ {
-		if pairs[i] > 0 {
-			continue
-		}
-
-		pair := problem21.AmicablePair(i)
-
-		if pair >= 0 && i != pair {
-			sum += pair + i
-			pairs[pair] = i
+	for i := 1; i < 28123; i++ {
+		hasAbundants := problem23.HasAbundantAddends(i, &anSlice, &anMap)
+		if !hasAbundants {
+			sum += i
 		}
 	}
 	fmt.Println(sum)
